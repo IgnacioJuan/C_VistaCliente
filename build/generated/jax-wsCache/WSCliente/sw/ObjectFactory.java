@@ -34,6 +34,8 @@ public class ObjectFactory {
     private final static QName _ObtenerSaldoResponse_QNAME = new QName("http://sw/", "ObtenerSaldoResponse");
     private final static QName _Retiro_QNAME = new QName("http://sw/", "Retiro");
     private final static QName _RetiroResponse_QNAME = new QName("http://sw/", "RetiroResponse");
+    private final static QName _ValidarContra_QNAME = new QName("http://sw/", "ValidarContra");
+    private final static QName _ValidarContraResponse_QNAME = new QName("http://sw/", "ValidarContraResponse");
     private final static QName _Hello_QNAME = new QName("http://sw/", "hello");
     private final static QName _HelloResponse_QNAME = new QName("http://sw/", "helloResponse");
 
@@ -122,6 +124,22 @@ public class ObjectFactory {
      */
     public RetiroResponse createRetiroResponse() {
         return new RetiroResponse();
+    }
+
+    /**
+     * Create an instance of {@link ValidarContra }
+     * 
+     */
+    public ValidarContra createValidarContra() {
+        return new ValidarContra();
+    }
+
+    /**
+     * Create an instance of {@link ValidarContraResponse }
+     * 
+     */
+    public ValidarContraResponse createValidarContraResponse() {
+        return new ValidarContraResponse();
     }
 
     /**
@@ -268,6 +286,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://sw/", name = "RetiroResponse")
     public JAXBElement<RetiroResponse> createRetiroResponse(RetiroResponse value) {
         return new JAXBElement<RetiroResponse>(_RetiroResponse_QNAME, RetiroResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidarContra }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ValidarContra }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://sw/", name = "ValidarContra")
+    public JAXBElement<ValidarContra> createValidarContra(ValidarContra value) {
+        return new JAXBElement<ValidarContra>(_ValidarContra_QNAME, ValidarContra.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidarContraResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link ValidarContraResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://sw/", name = "ValidarContraResponse")
+    public JAXBElement<ValidarContraResponse> createValidarContraResponse(ValidarContraResponse value) {
+        return new JAXBElement<ValidarContraResponse>(_ValidarContraResponse_QNAME, ValidarContraResponse.class, null, value);
     }
 
     /**

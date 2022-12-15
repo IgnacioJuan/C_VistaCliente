@@ -4,35 +4,17 @@
 <xsd:import namespace="http://sw/" schemaLocation="http://localhost:8080/SW_VistaCliente/WSCliente?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="Retiro">
-<part name="parameters" element="tns:Retiro"/>
-</message>
-<message name="RetiroResponse">
-<part name="parameters" element="tns:RetiroResponse"/>
-</message>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
-</message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
-</message>
 <message name="Login">
 <part name="parameters" element="tns:Login"/>
 </message>
 <message name="LoginResponse">
 <part name="parameters" element="tns:LoginResponse"/>
 </message>
-<message name="Deposito">
-<part name="parameters" element="tns:Deposito"/>
+<message name="Retiro">
+<part name="parameters" element="tns:Retiro"/>
 </message>
-<message name="DepositoResponse">
-<part name="parameters" element="tns:DepositoResponse"/>
-</message>
-<message name="ObtenerSaldo">
-<part name="parameters" element="tns:ObtenerSaldo"/>
-</message>
-<message name="ObtenerSaldoResponse">
-<part name="parameters" element="tns:ObtenerSaldoResponse"/>
+<message name="RetiroResponse">
+<part name="parameters" element="tns:RetiroResponse"/>
 </message>
 <message name="CrearCliente">
 <part name="parameters" element="tns:CrearCliente"/>
@@ -40,52 +22,62 @@
 <message name="CrearClienteResponse">
 <part name="parameters" element="tns:CrearClienteResponse"/>
 </message>
+<message name="ObtenerSaldo">
+<part name="parameters" element="tns:ObtenerSaldo"/>
+</message>
+<message name="ObtenerSaldoResponse">
+<part name="parameters" element="tns:ObtenerSaldoResponse"/>
+</message>
+<message name="Deposito">
+<part name="parameters" element="tns:Deposito"/>
+</message>
+<message name="DepositoResponse">
+<part name="parameters" element="tns:DepositoResponse"/>
+</message>
+<message name="ValidarContra">
+<part name="parameters" element="tns:ValidarContra"/>
+</message>
+<message name="ValidarContraResponse">
+<part name="parameters" element="tns:ValidarContraResponse"/>
+</message>
+<message name="hello">
+<part name="parameters" element="tns:hello"/>
+</message>
+<message name="helloResponse">
+<part name="parameters" element="tns:helloResponse"/>
+</message>
 <portType name="WSCliente">
-<operation name="Retiro">
-<input wsam:Action="http://sw/WSCliente/RetiroRequest" message="tns:Retiro"/>
-<output wsam:Action="http://sw/WSCliente/RetiroResponse" message="tns:RetiroResponse"/>
-</operation>
-<operation name="hello">
-<input wsam:Action="http://sw/WSCliente/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://sw/WSCliente/helloResponse" message="tns:helloResponse"/>
-</operation>
 <operation name="Login">
 <input wsam:Action="http://sw/WSCliente/LoginRequest" message="tns:Login"/>
 <output wsam:Action="http://sw/WSCliente/LoginResponse" message="tns:LoginResponse"/>
 </operation>
-<operation name="Deposito">
-<input wsam:Action="http://sw/WSCliente/DepositoRequest" message="tns:Deposito"/>
-<output wsam:Action="http://sw/WSCliente/DepositoResponse" message="tns:DepositoResponse"/>
-</operation>
-<operation name="ObtenerSaldo">
-<input wsam:Action="http://sw/WSCliente/ObtenerSaldoRequest" message="tns:ObtenerSaldo"/>
-<output wsam:Action="http://sw/WSCliente/ObtenerSaldoResponse" message="tns:ObtenerSaldoResponse"/>
+<operation name="Retiro">
+<input wsam:Action="http://sw/WSCliente/RetiroRequest" message="tns:Retiro"/>
+<output wsam:Action="http://sw/WSCliente/RetiroResponse" message="tns:RetiroResponse"/>
 </operation>
 <operation name="CrearCliente">
 <input wsam:Action="http://sw/WSCliente/CrearClienteRequest" message="tns:CrearCliente"/>
 <output wsam:Action="http://sw/WSCliente/CrearClienteResponse" message="tns:CrearClienteResponse"/>
 </operation>
+<operation name="ObtenerSaldo">
+<input wsam:Action="http://sw/WSCliente/ObtenerSaldoRequest" message="tns:ObtenerSaldo"/>
+<output wsam:Action="http://sw/WSCliente/ObtenerSaldoResponse" message="tns:ObtenerSaldoResponse"/>
+</operation>
+<operation name="Deposito">
+<input wsam:Action="http://sw/WSCliente/DepositoRequest" message="tns:Deposito"/>
+<output wsam:Action="http://sw/WSCliente/DepositoResponse" message="tns:DepositoResponse"/>
+</operation>
+<operation name="ValidarContra">
+<input wsam:Action="http://sw/WSCliente/ValidarContraRequest" message="tns:ValidarContra"/>
+<output wsam:Action="http://sw/WSCliente/ValidarContraResponse" message="tns:ValidarContraResponse"/>
+</operation>
+<operation name="hello">
+<input wsam:Action="http://sw/WSCliente/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://sw/WSCliente/helloResponse" message="tns:helloResponse"/>
+</operation>
 </portType>
 <binding name="WSClientePortBinding" type="tns:WSCliente">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="Retiro">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="hello">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
 <operation name="Login">
 <soap:operation soapAction=""/>
 <input>
@@ -95,7 +87,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="Deposito">
+<operation name="Retiro">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="CrearCliente">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -113,7 +114,25 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="CrearCliente">
+<operation name="Deposito">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ValidarContra">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="hello">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

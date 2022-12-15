@@ -26,39 +26,6 @@ public interface WSCliente {
 
     /**
      * 
-     * @param valor
-     * @param user
-     * @return
-     *     returns java.lang.Boolean
-     */
-    @WebMethod(operationName = "Retiro")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Retiro", targetNamespace = "http://sw/", className = "sw.Retiro")
-    @ResponseWrapper(localName = "RetiroResponse", targetNamespace = "http://sw/", className = "sw.RetiroResponse")
-    @Action(input = "http://sw/WSCliente/RetiroRequest", output = "http://sw/WSCliente/RetiroResponse")
-    public Boolean retiro(
-        @WebParam(name = "valor", targetNamespace = "")
-        double valor,
-        @WebParam(name = "user", targetNamespace = "")
-        String user);
-
-    /**
-     * 
-     * @param name
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "hello", targetNamespace = "http://sw/", className = "sw.Hello")
-    @ResponseWrapper(localName = "helloResponse", targetNamespace = "http://sw/", className = "sw.HelloResponse")
-    @Action(input = "http://sw/WSCliente/helloRequest", output = "http://sw/WSCliente/helloResponse")
-    public String hello(
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
-
-    /**
-     * 
      * @param usuario
      * @param contraseña
      * @return
@@ -82,29 +49,14 @@ public interface WSCliente {
      * @return
      *     returns java.lang.Boolean
      */
-    @WebMethod(operationName = "Deposito")
+    @WebMethod(operationName = "Retiro")
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "Deposito", targetNamespace = "http://sw/", className = "sw.Deposito")
-    @ResponseWrapper(localName = "DepositoResponse", targetNamespace = "http://sw/", className = "sw.DepositoResponse")
-    @Action(input = "http://sw/WSCliente/DepositoRequest", output = "http://sw/WSCliente/DepositoResponse")
-    public Boolean deposito(
-        @WebParam(name = "Valor", targetNamespace = "")
+    @RequestWrapper(localName = "Retiro", targetNamespace = "http://sw/", className = "sw.Retiro")
+    @ResponseWrapper(localName = "RetiroResponse", targetNamespace = "http://sw/", className = "sw.RetiroResponse")
+    @Action(input = "http://sw/WSCliente/RetiroRequest", output = "http://sw/WSCliente/RetiroResponse")
+    public Boolean retiro(
+        @WebParam(name = "valor", targetNamespace = "")
         double valor,
-        @WebParam(name = "user", targetNamespace = "")
-        String user);
-
-    /**
-     * 
-     * @param user
-     * @return
-     *     returns java.lang.Double
-     */
-    @WebMethod(operationName = "ObtenerSaldo")
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "ObtenerSaldo", targetNamespace = "http://sw/", className = "sw.ObtenerSaldo")
-    @ResponseWrapper(localName = "ObtenerSaldoResponse", targetNamespace = "http://sw/", className = "sw.ObtenerSaldoResponse")
-    @Action(input = "http://sw/WSCliente/ObtenerSaldoRequest", output = "http://sw/WSCliente/ObtenerSaldoResponse")
-    public Double obtenerSaldo(
         @WebParam(name = "user", targetNamespace = "")
         String user);
 
@@ -128,5 +80,71 @@ public interface WSCliente {
         String contraseña,
         @WebParam(name = "saldo", targetNamespace = "")
         double saldo);
+
+    /**
+     * 
+     * @param user
+     * @return
+     *     returns java.lang.Double
+     */
+    @WebMethod(operationName = "ObtenerSaldo")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "ObtenerSaldo", targetNamespace = "http://sw/", className = "sw.ObtenerSaldo")
+    @ResponseWrapper(localName = "ObtenerSaldoResponse", targetNamespace = "http://sw/", className = "sw.ObtenerSaldoResponse")
+    @Action(input = "http://sw/WSCliente/ObtenerSaldoRequest", output = "http://sw/WSCliente/ObtenerSaldoResponse")
+    public Double obtenerSaldo(
+        @WebParam(name = "user", targetNamespace = "")
+        String user);
+
+    /**
+     * 
+     * @param valor
+     * @param user
+     * @return
+     *     returns java.lang.Boolean
+     */
+    @WebMethod(operationName = "Deposito")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "Deposito", targetNamespace = "http://sw/", className = "sw.Deposito")
+    @ResponseWrapper(localName = "DepositoResponse", targetNamespace = "http://sw/", className = "sw.DepositoResponse")
+    @Action(input = "http://sw/WSCliente/DepositoRequest", output = "http://sw/WSCliente/DepositoResponse")
+    public Boolean deposito(
+        @WebParam(name = "Valor", targetNamespace = "")
+        double valor,
+        @WebParam(name = "user", targetNamespace = "")
+        String user);
+
+    /**
+     * 
+     * @param passtwo
+     * @param passone
+     * @return
+     *     returns java.lang.Integer
+     */
+    @WebMethod(operationName = "ValidarContra")
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "ValidarContra", targetNamespace = "http://sw/", className = "sw.ValidarContra")
+    @ResponseWrapper(localName = "ValidarContraResponse", targetNamespace = "http://sw/", className = "sw.ValidarContraResponse")
+    @Action(input = "http://sw/WSCliente/ValidarContraRequest", output = "http://sw/WSCliente/ValidarContraResponse")
+    public Integer validarContra(
+        @WebParam(name = "passone", targetNamespace = "")
+        String passone,
+        @WebParam(name = "passtwo", targetNamespace = "")
+        String passtwo);
+
+    /**
+     * 
+     * @param name
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "hello", targetNamespace = "http://sw/", className = "sw.Hello")
+    @ResponseWrapper(localName = "helloResponse", targetNamespace = "http://sw/", className = "sw.HelloResponse")
+    @Action(input = "http://sw/WSCliente/helloRequest", output = "http://sw/WSCliente/helloResponse")
+    public String hello(
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
 
 }

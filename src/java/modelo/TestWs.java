@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
@@ -29,9 +30,6 @@ public class TestWs {
         Transacciones transacciones = new Transacciones();
         Registro registro = new Registro();
 
-        if (!cliente.crearCliente("admin", "123", 100)) {
-            System.out.println("cliente ya creado");
-        }
         login.setLocationRelativeTo(null);
         login.setVisible(true);
 
@@ -43,6 +41,7 @@ public class TestWs {
                 String contraseña = login.getTxtContrasena().getText();
                 boolean validarIng = cliente.login(usuario, contraseña);
                 if (validarIng == false) {
+                    login.getLbMensajeIngreso().setForeground(Color.red);
                     login.getLbMensajeIngreso().setText("Usuario no existe o las credenciales son incorrectas");
                 } else {
                     System.out.println("Bienvenido: " + login.getTxtUsuario().getText());
@@ -52,6 +51,21 @@ public class TestWs {
                     login.dispose();
                     transacciones.getLbSaldoDisp().setText("$" + cliente.obtenerSaldo(usuario));
                 }
+            }
+        });
+        registro.getBtnRegreturn().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                login.setVisible(true);
+                registro.dispose();
+            }
+        });
+
+        transacciones.getBtnTrareturn().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                login.setVisible(true);
+                transacciones.dispose();
             }
         });
 
@@ -66,13 +80,18 @@ public class TestWs {
                 if (usuario.isEmpty() || pass1.isEmpty() || pass2.isEmpty()) {
                     registro.getLbMensajeRegistro().setText("Ingrese todos los campos");
                 } else {
-                    if (pass1.equals(pass2)) {
-                        if (cliente.crearCliente(usuario, pass2, valor)) {
-                            JOptionPane.showMessageDialog(null, "Registro correcto");
-                            registro.dispose();
-                            login.setVisible(true);
-                        } else {
-                            registro.getLbMensajeRegistro().setText("El usuario ya esta registrado");
+                    int i = cliente.validarContra(pass1, pass2);
+                    if (i != 0) {
+                        if (i == 1) {
+                            if (cliente.crearCliente(usuario, pass2, valor)) {
+                                JOptionPane.showMessageDialog(null, "Registro correcto");
+                                registro.dispose();
+                                login.setVisible(true);
+                            } else {
+                                registro.getLbMensajeRegistro().setText("El usuario ya esta registrado");
+                            }
+                        }else{
+                            registro.getLbMensajeRegistro().setText("La contraseña es debil. \n Debe contener de 4-8 caracteres, numeros, mayusculas y minusculas");
                         }
                     } else {
                         registro.getLbMensajeRegistro().setText("Las contraseñas no coinciden");
